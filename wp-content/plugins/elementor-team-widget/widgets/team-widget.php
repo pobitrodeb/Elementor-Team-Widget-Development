@@ -100,6 +100,7 @@ class Elementor_Team_Widget extends \Elementor\Widget_Base {
 					'{{WRAPPER}} .teams h4' => 'color: {{VALUE}};',
 				],
                 'default' => '#333', 
+                'separator' => 'after',
 			]
 		);
 
@@ -107,8 +108,35 @@ class Elementor_Team_Widget extends \Elementor\Widget_Base {
         $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
+                'label' => esc_html('Title Typography', 'team-widget'),
 				'name' => 'title_typography',
 				'selector' => '{{WRAPPER}} .teams h4',
+                'separator' => 'after',
+			]
+		);
+
+         //Desc Style Color
+         $this->add_control(
+			'desg_color',
+			[
+				'label' => esc_html__( 'Desg Color', 'team-widget' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .teams p' => 'color: {{VALUE}};',
+				],
+                'default' => '#333', 
+                'separator' => 'before',
+			]
+		);
+
+        //Desg Style Font 
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+                'label' => esc_html('Desc Typography', 'team-widget'),
+				'name' => 'desc_typography',
+				'selector' => '{{WRAPPER}} .teams p',
+                'separator' => 'before',
 			]
 		);
 
