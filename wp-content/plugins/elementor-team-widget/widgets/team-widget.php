@@ -82,8 +82,41 @@ class Elementor_Team_Widget extends \Elementor\Widget_Base {
 		);
 
 		    $this->end_controls_section();
+                    //Widget Style Section 
+        $this->start_controls_section(
+			'style_section',
+			[
+				'label' => esc_html__( 'Marker Style', 'team-widget' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+        //Title Style Color
+        $this->add_control(
+			'title_color',
+			[
+				'label' => esc_html__( 'Title Color', 'team-widget' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .teams h4' => 'color: {{VALUE}};',
+				],
+                'default' => '#333', 
+			]
+		);
+
+        //Title Style Font 
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_typography',
+				'selector' => '{{WRAPPER}} .teams h4',
+			]
+		);
+
+        $this->end_controls_section();
         }
-        
+
+
+
         //Render Data 
         protected function render(){
             $settings           = $this->get_settings_for_display();
@@ -94,7 +127,7 @@ class Elementor_Team_Widget extends \Elementor\Widget_Base {
         <div class="teams">
             <img src="<?php echo $team_image ?>" alt="">
             <h4><?php echo $team_name ?></h4>
-            <p><?php echo $team_name ?></p>
+            <p><?php echo $team_desg ?></p>
         </div>
         <?php
 
