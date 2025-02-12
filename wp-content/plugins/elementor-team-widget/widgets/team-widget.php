@@ -80,8 +80,23 @@ class Elementor_Team_Widget extends \Elementor\Widget_Base {
 				'placeholder' => esc_html__( 'Team designation', 'team-widget' ),
 			]
 		);
-        
+
 		    $this->end_controls_section();
         }
         
+        //Render Data 
+        protected function render(){
+            $settings           = $this->get_settings_for_display();
+            $team_image         = $settings['team_image']['url'];
+            $team_name          = $settings['team_name'];
+            $team_desg          = $settings['team_desg'];
+        ?>
+        <div class="teams">
+            <img src="<?php echo $team_image ?>" alt="">
+            <h4><?php echo $team_name ?></h4>
+            <p><?php echo $team_name ?></p>
+        </div>
+        <?php
+
+        }
 }
