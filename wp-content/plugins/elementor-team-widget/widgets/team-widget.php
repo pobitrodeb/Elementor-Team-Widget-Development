@@ -66,7 +66,7 @@ class Elementor_Team_Widget extends \Elementor\Widget_Base {
 				'default' => esc_html__( 'Title', 'team-widget' ),
 				'placeholder' => esc_html__( 'Type your title here', 'team-widget' ),
                 'label_block' => true,
-                'separator' => 'before'
+               
 			]
 		);
 
@@ -78,6 +78,7 @@ class Elementor_Team_Widget extends \Elementor\Widget_Base {
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'default' => esc_html__( 'Designation', 'team-widget' ),
 				'placeholder' => esc_html__( 'Team designation', 'team-widget' ),
+                
 			]
 		);
 
@@ -100,7 +101,7 @@ class Elementor_Team_Widget extends \Elementor\Widget_Base {
 					'{{WRAPPER}} .teams h4' => 'color: {{VALUE}};',
 				],
                 'default' => '#333', 
-                'separator' => 'after',
+                
 			]
 		);
 
@@ -111,7 +112,7 @@ class Elementor_Team_Widget extends \Elementor\Widget_Base {
                 'label' => esc_html('Title Typography', 'team-widget'),
 				'name' => 'title_typography',
 				'selector' => '{{WRAPPER}} .teams h4',
-                'separator' => 'after',
+              
 			]
 		);
 
@@ -125,7 +126,8 @@ class Elementor_Team_Widget extends \Elementor\Widget_Base {
 					'{{WRAPPER}} .teams p' => 'color: {{VALUE}};',
 				],
                 'default' => '#333', 
-                'separator' => 'before',
+                'separator' => 'before'
+               
 			]
 		);
 
@@ -136,9 +138,40 @@ class Elementor_Team_Widget extends \Elementor\Widget_Base {
                 'label' => esc_html('Desc Typography', 'team-widget'),
 				'name' => 'desc_typography',
 				'selector' => '{{WRAPPER}} .teams p',
-                'separator' => 'before',
+                
 			]
 		);
+
+        // Team Alignment 
+		$this->add_control(
+			'team_align',
+			[
+				'label' => esc_html__( 'Alignment', 'team-widget' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'team-widget' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'team-widget' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'team-widget' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'left',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .teams' => 'text-align: {{VALUE}};',
+                 
+				],
+                 'separator' => 'before'
+			]
+		);
+
 
         $this->end_controls_section();
         }
